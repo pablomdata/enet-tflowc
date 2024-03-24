@@ -30,6 +30,7 @@ int main(int argc,char ** argv) {
     const char *MODEL_FILE = argv[1];
     const char *LABELS_FILE = argv[2];
     const char *IMG_FILE = argv[3];
+    std::vector<float> predictions;
 
     std::vector<std::string> labels;
     readLabels(LABELS_FILE, labels);
@@ -44,7 +45,10 @@ int main(int argc,char ** argv) {
     auto outputData = model(input);
     //Tend = chrono::steady_clock::now();
 
-//    std::string label = labels[idx];
+    predictions = outputData.Tensor::get_data<float>();
+    float *output = std::max_element(predictions, outputData + NUM_CLASSES);
+    long idx = output - predictions;
+    std::string label = labels[idx];
     
     std::cout << IMG_FILE << ":" << " " << cppflow::arg_max(outputData, 1) <<  cppflow::max(outputData,1) << std::endl;
 
