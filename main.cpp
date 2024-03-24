@@ -41,7 +41,7 @@ int main(int argc,char ** argv) {
     
     //Tbegin = chrono::steady_clock::now();
     cppflow::model model(MODEL_FILE);
-    auto *outputData = model(input);
+    auto outputData = model(input);
     //Tend = chrono::steady_clock::now();
 
     float *output = std::max_element(outputData, outputData + NUM_CLASSES);
