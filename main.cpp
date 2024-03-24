@@ -25,7 +25,8 @@ int main(int argc,char ** argv) {
 
     chrono::steady_clock::time_point Tbegin, Tend;
 	
-	const int NUM_CLASSES = 53;
+    int f;
+    const int NUM_CLASSES = 53;
     const char *MODEL_FILE = argv[1];
     const char *LABELS_FILE = argv[2];
     const char *IMG_FILE = argv[3];
@@ -43,7 +44,7 @@ int main(int argc,char ** argv) {
     auto output = model(input);
     Tend = chrono::steady_clock::now();
 
-    auto idx = cppflow::arg_max(output, 1);
+    long idx = std::max_element(output, output+NUM_CLASSES);
     std::string label = labels[idx];
     
     std::cout << IMG_FILE << ":" << label << " " << cppflow::arg_max(output, 1) <<  cppflow::max(output,1) << std::endl;
