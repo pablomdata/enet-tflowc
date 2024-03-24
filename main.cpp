@@ -33,7 +33,8 @@ int main(int argc,char ** argv) {
     std::vector<float> predictions;
 
     std::vector<std::string> labels;
-    readLabels(LABELS_FILE, labels);
+    labels = ['10c', '10d', '10h', '10s', '2c', '2d','2h']
+    //readLabels(LABELS_FILE, labels);
 
     auto input = cppflow::decode_jpeg(cppflow::read_file(std::string(IMG_FILE)));
 
@@ -48,11 +49,10 @@ int main(int argc,char ** argv) {
     predictions = outputData.get_data<float>();
     auto proba = std::max_element(predictions.begin(), predictions.end());
     int idx = std::distance(predictions.begin(), proba);
-    std::string label = &labels[idx];
     
     std::cout<<"Position of the label: " << idx <<std::endl;
 
-    std::cout << IMG_FILE << ":" << " " << label << " " <<  *proba*100 << "% " << std::endl;
+    std::cout << IMG_FILE << ":" << " " << labels[idx] << " " <<  *proba*100 << "% " << std::endl;
 
     //std::cout << IMG_FILE << ":" << " " << cppflow::arg_max(outputData, 1) <<  cppflow::max(outputData,1) << std::endl;
     
