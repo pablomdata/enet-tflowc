@@ -46,13 +46,15 @@ int main(int argc,char ** argv) {
     //Tend = chrono::steady_clock::now();
 
     predictions = outputData.get_data<float>();
-    float output = std::max_element(predictions);
-    long idx = output;
+    auto proba = std::max_element(predictions.begin(), predictions.end());
+    int idx = std::distance(predictions.begin(), proba);
     std::string label = labels[idx];
     
     std::cout << predictions <<std::endl;
-    std::cout << IMG_FILE << ":" << " " << cppflow::arg_max(outputData, 1) <<  cppflow::max(outputData,1) << std::endl;
+    std::cout << IMG_FILE << ":" << " " << idx <<  *proba << std::endl;
 
+    //std::cout << IMG_FILE << ":" << " " << cppflow::arg_max(outputData, 1) <<  cppflow::max(outputData,1) << std::endl;
+    
     //calculate time
     //f = chrono::duration_cast <chrono::milliseconds> (Tend - Tbegin).count();
     //cout << "Process time: " << f << " ms" << endl;
