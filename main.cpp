@@ -50,7 +50,7 @@ int main(int argc,char ** argv) {
     int idx = std::distance(predictions.begin(), proba);
     std::string label = labels[idx];
     
-    //std::cout << predictions <<std::endl;
+    std::cout << labels <<std::endl;
     std::cout << IMG_FILE << ":" << " " << label << " " <<  *proba*100 << "% " << std::endl;
 
     //std::cout << IMG_FILE << ":" << " " << cppflow::arg_max(outputData, 1) <<  cppflow::max(outputData,1) << std::endl;
