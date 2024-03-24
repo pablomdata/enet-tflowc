@@ -51,7 +51,12 @@ int main(int argc,char ** argv) {
     std::string label = labels[idx];
     
     std::cout<<"Position of the label: " << idx<<std::endl;
-    std::cout << labels[5] <<std::endl;
+    std::cout << labels[0] <<std::endl;
+    std::cout << labels[1] <<std::endl;
+    std::cout << labels[2] <<std::endl;
+    std::cout << labels[3] <<std::endl;
+    std::cout << labels[4] <<std::endl;
+    std::cout << labels[4] <<std::endl;
     std::cout << IMG_FILE << ":" << " " << label << " " <<  *proba*100 << "% " << std::endl;
 
     //std::cout << IMG_FILE << ":" << " " << cppflow::arg_max(outputData, 1) <<  cppflow::max(outputData,1) << std::endl;
