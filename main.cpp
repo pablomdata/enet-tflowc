@@ -32,8 +32,8 @@ int main(int argc,char ** argv) {
     const char *IMG_FILE = argv[3];
     std::vector<float> predictions;
 
-    std::vector<std::string> labels;
-    labels = {'10c', '10d', '10h', '10s', '2c', '2d','2h'};
+//    std::vector<std::string> labels;
+    string labels[7] = {'10c', '10d', '10h', '10s', '2c', '2d','2h'};
     //readLabels(LABELS_FILE, labels);
 
     auto input = cppflow::decode_jpeg(cppflow::read_file(std::string(IMG_FILE)));
