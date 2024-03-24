@@ -39,19 +39,20 @@ int main(int argc,char ** argv) {
     input = cppflow::cast(input, TF_UINT8, TF_FLOAT);
     input = cppflow::expand_dims(input, 0);
     
-    Tbegin = chrono::steady_clock::now();
+    //Tbegin = chrono::steady_clock::now();
     cppflow::model model(MODEL_FILE);
-    auto output = model(input);
-    Tend = chrono::steady_clock::now();
+    auto *outputData = model(input);
+    //Tend = chrono::steady_clock::now();
 
-    long idx = std::max_element(output, output+NUM_CLASSES);
+    float *output = std::max_element(outputData, outputData + NUM_CLASSES);
+    long idx = output - outputData;
     std::string label = labels[idx];
     
-    std::cout << IMG_FILE << ":" << label << " " << cppflow::arg_max(output, 1) <<  cppflow::max(output,1) << std::endl;
+    std::cout << IMG_FILE << ":" << label << " " << cppflow::arg_max(outputData, 1) <<  cppflow::max(outputData,1) << std::endl;
 
     //calculate time
-    f = chrono::duration_cast <chrono::milliseconds> (Tend - Tbegin).count();
-    cout << "Process time: " << f << " ms" << endl;
+    //f = chrono::duration_cast <chrono::milliseconds> (Tend - Tbegin).count();
+    //cout << "Process time: " << f << " ms" << endl;
  
     return 0;
 }
