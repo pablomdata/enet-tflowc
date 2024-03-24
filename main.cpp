@@ -1,6 +1,9 @@
 #include <iostream>
+#include <fstream>
+#include <algorithm>
 #include "cppflow/cppflow.h"
 
+using namespace std;
 
 void readLabels(const char *labelsFile, std::vector<std::string> &labels)
 {
