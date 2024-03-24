@@ -50,6 +50,7 @@ int main(int argc,char ** argv) {
     int idx = std::distance(predictions.begin(), proba);
     std::string label = labels[idx];
     
+    std::cout<<"Position of the label: " << idx<<std::endl;
     std::cout << labels[5] <<std::endl;
     std::cout << IMG_FILE << ":" << " " << label << " " <<  *proba*100 << "% " << std::endl;
 
