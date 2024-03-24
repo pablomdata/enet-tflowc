@@ -44,11 +44,9 @@ int main(int argc,char ** argv) {
     auto outputData = model(input);
     //Tend = chrono::steady_clock::now();
 
-    float *output = std::max_element(outputData, outputData + NUM_CLASSES);
-    long idx = output - outputData;
-    std::string label = labels[idx];
+//    std::string label = labels[idx];
     
-    std::cout << IMG_FILE << ":" << label << " " << cppflow::arg_max(outputData, 1) <<  cppflow::max(outputData,1) << std::endl;
+    std::cout << IMG_FILE << ":" << " " << cppflow::arg_max(outputData, 1) <<  cppflow::max(outputData,1) << std::endl;
 
     //calculate time
     //f = chrono::duration_cast <chrono::milliseconds> (Tend - Tbegin).count();
