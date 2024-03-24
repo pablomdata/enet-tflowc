@@ -48,9 +48,9 @@ int main(int argc,char ** argv) {
     predictions = outputData.get_data<float>();
     auto proba = std::max_element(predictions.begin(), predictions.end());
     int idx = std::distance(predictions.begin(), proba);
-    std::string label = labels[idx];
+    std::string label = &labels[idx];
     
-    std::cout<<"Position of the label: " << labels[idx] <<std::endl;
+    std::cout<<"Position of the label: " << idx <<std::endl;
 
     std::cout << IMG_FILE << ":" << " " << label << " " <<  *proba*100 << "% " << std::endl;
 
