@@ -23,7 +23,7 @@ int main(int argc,char ** argv) {
     }
 
 
-    chrono::steady_clock::time_point Tbegin, Tend;
+//    chrono::steady_clock::time_point Tbegin, Tend;
 	
     int f;
     const int NUM_CLASSES = 53;
