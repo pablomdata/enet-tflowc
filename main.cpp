@@ -45,7 +45,7 @@ int main(int argc,char ** argv) {
     auto outputData = model(input);
     //Tend = chrono::steady_clock::now();
 
-    predictions = outputData.Tensor::get_data<float>();
+    predictions = outputData.get_data<float>();
     float *output = std::max_element(predictions, outputData + NUM_CLASSES);
     long idx = output - predictions;
     std::string label = labels[idx];
