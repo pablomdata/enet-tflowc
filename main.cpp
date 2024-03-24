@@ -46,7 +46,7 @@ int main(int argc,char ** argv) {
     //Tend = chrono::steady_clock::now();
 
     predictions = outputData.get_data<float>();
-    float *output = std::max_element(predictions, outputData + NUM_CLASSES);
+    float *output = std::max_element(predictions, predictions + NUM_CLASSES);
     long idx = output - predictions;
     std::string label = labels[idx];
     
