@@ -47,7 +47,7 @@ int main(int argc,char ** argv) {
 
     predictions = outputData.get_data<float>();
     float *output = std::max_element(predictions, predictions + NUM_CLASSES);
-    long idx = output - predictions;
+    long idx = output;
     std::string label = labels[idx];
     
     std::cout << IMG_FILE << ":" << " " << cppflow::arg_max(outputData, 1) <<  cppflow::max(outputData,1) << std::endl;
